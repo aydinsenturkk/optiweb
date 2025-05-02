@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Optiweb Usage Examples
+
+This file contains usage examples for the Optiweb CLI tool.
+
+## Basic Usage
+
+To optimize your images with the default settings:
+
+```bash
+optiweb --input ./images --output ./optimized
+```
+
+This command optimizes all JPG and PNG files in the "images" folder and saves them to the "optimized" folder.
+
+## WebP Conversion
+
+To convert your images to WebP format:
+
+```bash
+optiweb --input ./images --output ./optimized --webp
+```
+
+This command optimizes and converts all JPG and PNG files to WebP format.
+
+## Adjusting Quality
+
+To set the quality of optimized images:
+
+```bash
+optiweb --input ./images --output ./optimized --quality 90
+```
+
+The quality value must be between 0 and 100. The default is 85.
+
+## Skip Existing Files
+
+To skip files that already exist in the output folder:
+
+```bash
+optiweb --input ./images --output ./optimized --skip-existing
+```
+
+## Verbose Output
+
+To get more detailed output:
+
+```bash
+optiweb --input ./images --output ./optimized --verbose
+```
+
+## Full Example
+
+A full example using multiple parameters:
+
+```bash
+optiweb --input ./images --output ./optimized --webp --quality 85 --skip-existing --verbose
+```

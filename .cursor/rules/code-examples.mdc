@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Optiweb Code Examples
+
+This file contains code snippets used in the Optiweb project.
+
+## CLI Usage
+
+```javascript
+// Example CLI usage from [src/index.js](mdc:src/index.js)
+const { program } = require('commander');
+
+program
+  .name('optiweb')
+  .description('A CLI tool for image optimization according to Google PageSpeed standards')
+  .version(packageJson.version)
+  .requiredOption('-i, --input <path>', 'Input folder (required)')
+  .requiredOption('-o, --output <path>', 'Output folder (required)')
+  .option('-w, --webp', 'Convert to WebP format', false)
+  .option('-q, --quality <number>', 'Quality level (0-100)', '85');
+```
+
+## Image Optimization
+
+```javascript
+// Example image optimization from [src/optiweb.js](mdc:src/optiweb.js)
+// JPEG settings
+if (['.jpg', '.jpeg'].includes(ext)) {
+  if (options.webp) {
+    // Convert to WebP format
+    image = image.webp({
+      quality: options.quality,
+      lossless: false,
+      reductionEffort: 6 // Maximum compression effort
+    });
+  } else {
+    // Optimize as JPEG
+    image = image.jpeg({
+      quality: options.quality,
+      mozjpeg: true, // Uses MozJPEG as recommended by Google
+      trellisQuantisation: true,
+      overshootDeringing: true,
+      optimizeScans: true
+    });
+  }
+}
+```
+
+## Directory Processing
+
+```javascript
+// Example directory processing from [src/optiweb.js](mdc:src/optiweb.js)
+// Find all files
+const files = glob.sync('**/*', { cwd: inputDir, nodir: true, dot: true });
+
+// Process each file
+for (let i = 0; i < files.length; i++) {
+  const file = files[i];
+  const inputFile = path.join(inputDir, file);
+  const outputFile = path.join(outputDir, file);
+  const relativeOutputDir = path.dirname(file);
+  const absoluteOutputDir = path.join(outputDir, relativeOutputDir);
+  
+  // Create output directory
+  await fs.ensureDir(absoluteOutputDir);
+  
+  // File processing logic...
+}
+```

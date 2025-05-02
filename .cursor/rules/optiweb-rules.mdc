@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Optiweb Project
+
+This project is a CLI tool for optimizing image files according to Google PageSpeed standards.
+
+## Project Structure
+
+- Main entry point: [src/index.js](mdc:src/index.js) (CLI interface)
+- Optimization logic: [src/optiweb.js](mdc:src/optiweb.js)
+- Project configuration: [package.json](mdc:package.json)
+- Documentation: [README.md](mdc:README.md)
+
+## Workflow
+
+1. The user runs the CLI command
+2. [src/index.js](mdc:src/index.js) parses the parameters
+3. The `processDirectory` function in [src/optiweb.js](mdc:src/optiweb.js) is called
+4. `processDirectory` scans all files in the input folder
+5. JPG and PNG files are optimized and optionally converted to WebP
+6. Other file types are copied as-is
+7. The folder structure is preserved in the output
+8. Results are reported to the user
+
+## Dependencies
+
+- commander: CLI argument parsing
+- sharp: Image processing and optimization
+- fs-extra: File system operations
+- glob: File pattern matching
+- ora: Terminal spinner animations
+- chalk: Terminal coloring
+
+## Usage Example
+
+```bash
+optiweb --input ./images --output ./optimized --webp --quality 85
+```
+
+## Commit Message Convention (for Cursor IDE)
+
+All commit messages must follow the [Conventional Commits](mdc:https:/www.conventionalcommits.org/en/v1.0.0) specification.
+
+**Example:**
+
+```
+feat(cli): add support for WebP conversion
+```
+
+Use this format for all commits to ensure clarity and automation compatibility.
