@@ -1,6 +1,6 @@
 {
     "name": "optiweb",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A powerful CLI image optimization tool compliant with Google PageSpeed standards. Supports WebP, multiple sizes, responsive images, and lossless/nearLossless modes.",
     "main": "src/index.js",
     "bin": {
