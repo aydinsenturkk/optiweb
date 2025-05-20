@@ -49,81 +49,93 @@ optiweb --input <input-folder> --output <output-folder> [options]
 
 ### Options
 
-| Option                  | Description                                        | Default  |
-| ----------------------- | -------------------------------------------------- | -------- |
-| `--input`, `-i`         | Input folder (required)                            | -        |
-| `--output`, `-o`        | Output folder (required)                           | -        |
-| `--webp`, `-w`          | Convert to WebP format                             | false    |
-| `--quality`, `-q`       | General quality level (0-100)                      | 85       |
-| `--jpg-quality`         | Quality for JPG (0-100)                            | 85       |
-| `--png-quality`         | Quality for PNG (0-100)                            | 85       |
-| `--webp-lossless`       | Enable WebP lossless mode                          | false    |
-| `--webp-near-lossless`  | Enable WebP nearLossless mode                      | false    |
-| `--skip-existing`, `-s` | Skip files that already exist                      | false    |
-| `--verbose`, `-v`       | Verbose output                                     | false    |
-| `--ignore <patterns>`   | Ignore file/folder patterns (comma-separated glob) | -        |
-| `--resize <dimensions>` | Resize to fixed size (e.g. 800x600)                | -        |
-| `--resize-mode <mode>`  | Resize mode                                        | cover    |
-| `--max-width <width>`   | Maximum width, proportional resize                 | -        |
-| `--max-height <height>` | Maximum height, proportional resize                | -        |
-| `--sizes <sizes>`       | Multiple sizes (comma-separated, e.g. 180,300,500) | -        |
-| `--suffix-pattern <p>`  | Suffix pattern for file names                      | -{width} |
-| `--only-resize`         | Only resize, do not optimize                       | false    |
-| `--help`, `-h`          | Show help                                          | -        |
+| Option                  | Description                                              | Default  |
+| ----------------------- | -------------------------------------------------------- | -------- |
+| `--input`, `-i`         | Input folder (required)                                  | -        |
+| `--output`, `-o`        | Output folder (required)                                 | -        |
+| `--webp`, `-w`          | Convert to WebP format                                   | false    |
+| `--quality`, `-q`       | General quality level (0-100)                            | 85       |
+| `--jpg-quality`         | Quality for JPG (0-100)                                  | 85       |
+| `--png-quality`         | Quality for PNG (0-100)                                  | 85       |
+| `--webp-lossless`       | Enable WebP lossless mode                                | false    |
+| `--webp-near-lossless`  | Enable WebP nearLossless mode                            | false    |
+| `--skip-existing`, `-s` | Skip files that already exist                            | false    |
+| `--verbose`, `-v`       | Verbose output                                           | false    |
+| `--ignore <patterns>`   | Ignore file/folder patterns (comma-separated glob)       | -        |
+| `--resize <dimensions>` | Resize to fixed size (e.g. 800x600)                      | -        |
+| `--resize-mode <mode>`  | Resize mode                                              | cover    |
+| `--max-width <width>`   | Maximum width, proportional resize                       | -        |
+| `--max-height <height>` | Maximum height, proportional resize                      | -        |
+| `--sizes <sizes>`       | Multiple sizes (comma-separated, e.g. 180,300,500)       | -        |
+| `--suffix-pattern <p>`  | Suffix pattern for file names                            | -{width} |
+| `--only-resize`         | Only resize, do not optimize                             | false    |
+| `--slug`                | Convert file names to slug format (lowercase, no spaces) | false    |
+| `--help`, `-h`          | Show help                                                | -        |
 
 ### Examples
 
 Optimize JPG and PNG files:
+
 ```bash
 optiweb --input ./images --output ./optimized
 ```
 
 Optimize and convert to WebP:
+
 ```bash
 optiweb --input ./images --output ./optimized --webp
 ```
 
 Use higher quality:
+
 ```bash
 optiweb --input ./images --output ./optimized --quality 90
 ```
 
 Ignore specific files and folders:
+
 ```bash
 optiweb --input ./images --output ./optimized --ignore "node_modules/**,*.svg,temp/*"
 ```
 
 Resize images to a specific size:
+
 ```bash
 optiweb --input ./images --output ./optimized --resize 800x600
 ```
 
 Limit maximum width (keep aspect ratio):
+
 ```bash
 optiweb --input ./images --output ./optimized --max-width 1200
 ```
 
 Resize and convert to WebP:
+
 ```bash
 optiweb --input ./images --output ./optimized --resize 800x600 --webp
 ```
 
 Generate responsive images in multiple sizes:
+
 ```bash
 optiweb --input ./images --output ./optimized --sizes "200,400,800,1200" --webp
 ```
 
 Use a custom suffix pattern for multi-size output:
+
 ```bash
 optiweb --input ./images --output ./optimized --sizes "200,400,800" --suffix-pattern "_w{width}"
 ```
 
 Only resize, do not optimize:
+
 ```bash
 optiweb --input ./images --output ./optimized --sizes "200,400,800" --only-resize
 ```
 
 Use WebP lossless and nearLossless modes:
+
 ```bash
 optiweb --input ./images --output ./optimized --webp --webp-lossless --webp-near-lossless
 ```
@@ -145,6 +157,7 @@ The `--suffix-pattern` option determines how the size is added to the file name.
 - `logo.png` → `logo-200.png`, `logo-400.png`, etc.
 
 Other examples:
+
 - `--suffix-pattern "_w{width}"` → `logo_w200.png`, `logo_w400.png`, etc.
 - `--suffix-pattern "@{width}x"` → `logo@200x.png`, `logo@400x.png`, etc.
 
